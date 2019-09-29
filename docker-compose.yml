@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+
+  back:
+      volumes:
+        - .:/app
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: vk-message-server1
+      ports:
+        - 9090:9090
+      hostname: vk-message-server1
+      command: python3 server.py
+      networks:
+        - server
+      restart: always
+
+
+networks:
+  server:
+    external: true
